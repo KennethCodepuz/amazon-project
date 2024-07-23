@@ -1,6 +1,5 @@
-export {addToCart};
-export {removeFromCart};
-export {cart}
+export {addToCart, removeFromCart, cart, updateQuantity};
+
 
 let cart = JSON.parse(localStorage.getItem('cart'));
 
@@ -55,3 +54,17 @@ function removeFromCart(productId) {
     
     saveToStorage();
   }
+
+function updateQuantity(productId, newQuantity) {
+  let matchingItem
+
+  cart.forEach((cartItem) => {
+    if (productId === cartItem.productId){
+      matchingItem = cartItem;
+    }
+  });
+
+  matchingItem.quantity = newQuantity;
+
+  saveToStorage();
+}

@@ -3,6 +3,8 @@ import { products } from '../data/products.js';
 import { formatCurrency } from './utils/money.js';
 
 
+updateCardQuantity();
+
 let productsHTML = '';
 
 products.forEach((product) => {
@@ -66,8 +68,9 @@ function updateCardQuantity() {
       cartQuantity += cartItem.quantity;
     });
     
-
+    
     document.querySelector('.js-cart-quantity').innerHTML = cartQuantity;
+    
 }
 
 document.querySelectorAll('.js-add-to-cart').forEach((button) => {
@@ -78,4 +81,3 @@ document.querySelectorAll('.js-add-to-cart').forEach((button) => {
     
   })
 });
-
