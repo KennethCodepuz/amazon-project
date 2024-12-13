@@ -7,6 +7,8 @@ import dayjs from 'https://unpkg.com/dayjs@1.11.10/esm/index.js';
 import {deliveryOptions, getDeliveryOption} from '../../data/deliveryOptions.js';
 import {renderPaymentSummary} from './paymentSummary.js';
 
+updateChekoutQuantity();
+
 export function renderOrderSummary() {
   let cartSummaryHTML = '';
 
@@ -129,6 +131,7 @@ export function renderOrderSummary() {
         container.remove();
 
         renderPaymentSummary();
+        updateChekoutQuantity();
       });
     });
 
@@ -141,6 +144,21 @@ export function renderOrderSummary() {
         renderPaymentSummary();
       });
     });
+
+  
+    
 }
+
+function updateChekoutQuantity() {
+  let cartQuantity = 0;
+
+  cart.forEach((cartItem) => {
+    cartQuantity += cartItem.quantity;
+  });
+
+  document.querySelector('.js-checkout-link')
+    .innerHTML = cartQuantity;
+}
+
 
 
